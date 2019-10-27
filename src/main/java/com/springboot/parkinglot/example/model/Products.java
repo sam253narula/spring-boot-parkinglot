@@ -13,12 +13,11 @@ import lombok.NoArgsConstructor;
 @Data
 @Builder
 @Entity
-public class Vehicle {
-	@Id
-	private Long id;
-	private String carNumber;
-	private String ownerName;
-
+public class Products{
+	 @Id
+	 private Long productId;
+	 String item;
+	 int price;
 }
 
- 
+

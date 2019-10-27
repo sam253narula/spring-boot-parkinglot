@@ -1,7 +1,6 @@
 package com.springboot.parkinglot.example.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import com.springboot.parkinglot.example.model.Products.ProductsBuilder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,13 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-@Entity
-public class Vehicle {
-	@Id
-	private Long id;
-	private String carNumber;
-	private String ownerName;
+public class Bill {
+String item;
 
 }
-
- 

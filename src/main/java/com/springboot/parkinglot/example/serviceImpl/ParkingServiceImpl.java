@@ -1,5 +1,6 @@
 package com.springboot.parkinglot.example.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,22 +15,30 @@ public class ParkingServiceImpl implements ParkingService {
 
 	@Autowired
 	ParkingRepository parkingRepository;
-	/*
-	 * @Override public Student updatestudent(Student student) { return
-	 * studentRepository.saveAndFlush(student); }
-	 */
-
+	
+	@Override
 	public List<Vehicle> getVehicleList() {
-		return parkingRepository.findAll();
+		 return parkingRepository.findAll();
 	}
-
+	
 	@Override
 	public String park(Vehicle vehicle) {
-		if (vehicle.getSlotNumber() <= 10) {
+		 long id = vehicle.getId();
+		 List<Vehicle> parkedVehicles = new ArrayList<>();
+		 parkedVehicles = parkingRepository.findAll();
+		 boolean available = true;
+		 for(Vehicle v: parkedVehicles) {
+			 if(v.getId() == id) {
+				 available = false; 
+				 throw new RuntimeException("Slot not available");
+			 }
+		 }
+		 if (vehicle.getId() <= 10 && vehicle.getId() != 0) {
 			parkingRepository.save(vehicle);
 			return "Parked";
 		}
 		return "Slot not available";
+		
 	}
 
 	@Override

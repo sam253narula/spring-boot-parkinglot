@@ -32,11 +32,19 @@ public class ParkingSlotController {
 	@PostMapping(value = "/vehicle/park")
 	public String park(@RequestBody Vehicle vehicle) { 
 		return parkingService.park(vehicle);
+		//return new ResponseEntity<>(parkingService.park(vehicle), HttpStatus.CREATED);
 	}
 
 	@DeleteMapping("/vehicle/unPark/{id}")
 	String newStudent(@PathVariable Long id) {
 		return parkingService.unParkVehicle(id);
 	}
+	
+	/*@GetMapping("/hello")
+	String helloSaili() {
+		return "Hello Saili";
+		
+	}*/
+	
 
 }
